@@ -72,12 +72,12 @@ export async function uploadToPlayStore(options: EditOptions, releaseFiles: stri
             });
             versionCodes.push(versionCode!);
         }
-        core.info(`Successfully uploaded ${versionCodes.length} artifacts`)
+        core.info(`Successfully uploaded ${versionCodes.length} artifacts, versionCode=${versionCodes[0]}`)
 
         // Add the uploaded artifacts to the Edit track
-        core.info(`Adding ${versionCodes.length} artifacts to release on '${options.track}' track`)
-        const track = await addReleasesToTrack(appEdit.data, options, versionCodes);
-        core.debug(`Track: ${track}`);
+        // core.info(`Adding ${versionCodes.length} artifacts to release on '${options.track}' track`)
+        // const track = await addReleasesToTrack(appEdit.data, options, versionCodes);
+        // core.debug(`Track: ${track}`);
 
         // Commit the pending Edit
         // core.info(`Committing the Edit`)
@@ -95,7 +95,7 @@ export async function uploadToPlayStore(options: EditOptions, releaseFiles: stri
         //     core.setFailed(`Error ${res.status}: ${res.statusText}`);
         //     return Promise.reject(res.status);
         // }
-        return Promise.resolve("Skip Commit")
+        return Promise.resolve("Skip Add and Commit")
     }
 }
 

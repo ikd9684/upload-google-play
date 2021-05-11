@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: ''
 labels: bug
-assignees: r0adkll
+assignees: ikd9684
 
 ---
 
@@ -16,7 +16,7 @@ A clear and concise description of what the bug is.
 
 ```yml
 - name: Deploy Production
-  uses: r0adkll/upload-google-play@v1
+  uses: ikd9684/upload-google-play@v1
   with:
     serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
     packageName: com.example.app
