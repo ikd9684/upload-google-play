@@ -80,21 +80,22 @@ export async function uploadToPlayStore(options: EditOptions, releaseFiles: stri
         core.debug(`Track: ${track}`);
 
         // Commit the pending Edit
-        core.info(`Committing the Edit`)
-        const res = await androidPublisher.edits.commit({
-            auth: options.auth,
-            editId: appEdit.data.id!,
-            packageName: options.applicationId
-        });
+        // core.info(`Committing the Edit`)
+        // const res = await androidPublisher.edits.commit({
+        //     auth: options.auth,
+        //     editId: appEdit.data.id!,
+        //     packageName: options.applicationId
+        // });
 
         // Simple check to see whether commit was successful
-        if (res.data.id != null) {
-            core.info(`Successfully committed ${res.data.id}`);
-            return Promise.resolve(res.data.id!);
-        } else {
-            core.setFailed(`Error ${res.status}: ${res.statusText}`);
-            return Promise.reject(res.status);
-        }
+        // if (res.data.id != null) {
+        //     core.info(`Successfully committed ${res.data.id}`);
+        //     return Promise.resolve(res.data.id!);
+        // } else {
+        //     core.setFailed(`Error ${res.status}: ${res.statusText}`);
+        //     return Promise.reject(res.status);
+        // }
+        return Promise.resolve("Skip Commit")
     }
 }
 

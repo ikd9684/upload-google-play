@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/r0adkll/upload-google-play.git"
+    "url": "git+https://github.com/ikd9684/upload-google-play.git"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "r0adkll",
+  "author": "ikd9684",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.6",
@@ -26,11 +26,11 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",
-    "@types/node": "^14.14.37",
+    "@types/node": "^14.14.44",
     "@vercel/ncc": "^0.27.0",
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
     "ts-jest": "^26.5.4",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.4"
   }
 }

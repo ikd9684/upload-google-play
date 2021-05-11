@@ -1,6 +1,6 @@
 name: 'Upload Android Release to Play Store'
 description: "An action to upload a signed Android release (.apk or .aab) to the Google Play Store Developer Console"
-author: 'r0adkll'
+author: 'ikd9684'
 branding:
   icon: 'truck'
   color: 'orange'
