@@ -50,14 +50,14 @@ Portion of users who should get the staged version of the app. Accepts values be
 
 ### `status`
 
-Release status. Specify 'draft' if you want to draft the release and not publish it. If no status is specified, it will be treated as 'inProgress' if userFraction is specified, otherwise as 'completed'.  
+Release status. Specify `draft` if you want to draft the release and not publish it. If no status is specified, it will be treated as `inProgress` if userFraction is specified, otherwise as `completed`.  
 _Values:_ `draft`,`inProgress`,`halted`,`completed`
 
-Please refer to the following  
+Please refer to the following:  
 https://developers.google.com/android-publisher/api-ref/rest/v3/edits.tracks#status  
 
 リリースを下書きにして公開しない場合は`draft`を指定してください。  
-`status`を指定しなかった場合、`userFraction`を指定していれば`inProgress`、そうでなければ`completed`として処理します。
+`status`を指定しなかった場合、`userFraction`を指定していれば`inProgress`、`userFraction`の指定がなければ`completed`として処理します。
 
 ### `whatsNewDirectory`
 
