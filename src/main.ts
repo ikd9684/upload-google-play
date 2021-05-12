@@ -21,7 +21,7 @@ async function run() {
         const track = core.getInput('track', { required: true });
         const inAppUpdatePriority = core.getInput('inAppUpdatePriority', { required: false });
         const userFraction = core.getInput('userFraction', { required: false });
-        const status = 'draft';//core.getInput('status', { required: false });
+        const status = core.getInput('status', { required: false });
         const whatsNewDir = core.getInput('whatsNewDirectory', { required: false });
         const mappingFile = core.getInput('mappingFile', { required: false });
 
