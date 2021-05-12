@@ -75,27 +75,26 @@ export async function uploadToPlayStore(options: EditOptions, releaseFiles: stri
         core.info(`Successfully uploaded ${versionCodes.length} artifacts, versionCode=${versionCodes[0]}`)
 
         // Add the uploaded artifacts to the Edit track
-        // core.info(`Adding ${versionCodes.length} artifacts to release on '${options.track}' track`)
-        // const track = await addReleasesToTrack(appEdit.data, options, versionCodes);
-        // core.debug(`Track: ${track}`);
+        core.info(`Adding ${versionCodes.length} artifacts to release on '${options.track}' track`)
+        const track = await addReleasesToTrack(appEdit.data, options, versionCodes);
+        core.debug(`Track: ${track}`);
 
         // Commit the pending Edit
-        // core.info(`Committing the Edit`)
-        // const res = await androidPublisher.edits.commit({
-        //     auth: options.auth,
-        //     editId: appEdit.data.id!,
-        //     packageName: options.applicationId
-        // });
+        core.info(`Committing the Edit`)
+        const res = await androidPublisher.edits.commit({
+            auth: options.auth,
+            editId: appEdit.data.id!,
+            packageName: options.applicationId
+        });
 
         // Simple check to see whether commit was successful
-        // if (res.data.id != null) {
-        //     core.info(`Successfully committed ${res.data.id}`);
-        //     return Promise.resolve(res.data.id!);
-        // } else {
-        //     core.setFailed(`Error ${res.status}: ${res.statusText}`);
-        //     return Promise.reject(res.status);
-        // }
-        return Promise.resolve("Skip Add and Commit")
+        if (res.data.id != null) {
+            core.info(`Successfully committed ${res.data.id}`);
+            return Promise.resolve(res.data.id!);
+        } else {
+            core.setFailed(`Error ${res.status}: ${res.statusText}`);
+            return Promise.reject(res.status);
+        }
     }
 }
 
@@ -164,7 +163,7 @@ async function addReleasesToTrack(appEdit: AppEdit, options: EditOptions, versio
                     {
                         name: options.name,
                         userFraction: options.userFraction,
-                        status: status,
+                        status: 'draft',
                         inAppUpdatePriority: options.inAppUpdatePriority,
                         releaseNotes: await readLocalizedReleaseNotes(options.whatsNewDir),
                         versionCodes: versionCodes.filter(x => x != 0).map(x => x.toString())
