@@ -24,6 +24,7 @@ export interface EditOptions {
     track: string;
     inAppUpdatePriority: number;
     userFraction?: number;
+    status?: string;
     whatsNewDir?: string;
     mappingFile?: string;
     name?: string;
@@ -149,8 +150,11 @@ async function addReleasesToTrack(appEdit: AppEdit, options: EditOptions, versio
     } else {
         status = 'completed';
     }
+    if (options.status) {
+        status = options.status;
+    }
 
-    core.debug(`Creating Track Release for Edit(${appEdit.id}) for Track(${options.track}) with a UserFraction(${options.userFraction}) and VersionCodes(${versionCodes})`);
+    core.info(`Creating Track Release for Edit(${appEdit.id}) for Track(${options.track}) with a UserFraction(${options.userFraction}) and Status(${status}) and VersionCodes(${versionCodes})`);
     const res = await androidPublisher.edits.tracks
         .update({
             auth: options.auth,
@@ -163,7 +167,7 @@ async function addReleasesToTrack(appEdit: AppEdit, options: EditOptions, versio
                     {
                         name: options.name,
                         userFraction: options.userFraction,
-                        status: 'draft',
+                        status: status,
                         inAppUpdatePriority: options.inAppUpdatePriority,
                         releaseNotes: await readLocalizedReleaseNotes(options.whatsNewDir),
                         versionCodes: versionCodes.filter(x => x != 0).map(x => x.toString())
